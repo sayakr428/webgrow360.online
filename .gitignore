@@ -5,3 +5,7 @@ node_modules/
 
 # original video uploads (the site uses the compressed copies in assets/reels/)
 assets/services/*.mp4
+
+# server-side secrets (MongoDB credentials)
+api/config.php
+.deploy/

@@ -18,6 +18,8 @@
     var w=word.scrollWidth; if(w) mark.style.setProperty('--wf-fs',(100*mark.clientWidth/w).toFixed(2)+'px'); }
   fit(); window.addEventListener('resize',fit);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+  // web fonts load without blocking render, so re-fit whenever another font finishes loading
+  if(document.fonts&&document.fonts.addEventListener) document.fonts.addEventListener('loadingdone',fit);
   if(mark){
     mark.addEventListener('pointermove',function(e){ var r=mark.getBoundingClientRect();
       mark.style.setProperty('--mx',(e.clientX-r.left)+'px'); mark.style.setProperty('--my',(e.clientY-r.top)+'px'); });

@@ -19,15 +19,15 @@
 <meta name="twitter:card" content="summary_large_image" />
 
 <link rel="icon" type="image/webp" href="assets/webgrow360-mark.webp" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Instrument+Sans:wght@600&family=Azeret+Mono:wght@400&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { theme: { extend: { fontFamily: {
-    display:['Space Grotesk','sans-serif'], body:['Inter','sans-serif'], serif:['Cormorant Garamond','serif']
-  } } } };
-</script>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="preconnect" href="https://images.unsplash.com" />
+<!-- Self-hosted fonts (assets/fonts, see assets/css/fonts.css) -->
+<link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/fonts.css?v=20261104" />
+<!-- Pre-built Tailwind (see tailwind.site.config.js) instead of the render-blocking CDN -->
+<link rel="stylesheet" href="assets/css/site.css?v=20261104" />
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"WebGrow360","description":"Creative branding, advertising and marketing agency for B2B and B2C, specialising in reels, posters, brand identity and data-driven campaigns.","url":"https://webgrow360.online/","email":"Connect@team.webgrow360.online","telephone":"+91-89743-32863","slogan":"Branding · Advertising · Marketing","priceRange":"$$$","areaServed":"Worldwide","knowsAbout":["Branding","Advertising","Social Media Marketing","Reels","Poster Design","Performance Marketing","Brand Identity","B2B Marketing"]}
@@ -125,6 +125,8 @@
   body.soul .flow-inner{ color:#f1eefc; }
   .flow-soulbg{ position:absolute; inset:0; z-index:0; background-size:cover; background-position:center; opacity:0; transition:opacity .8s; filter:brightness(.4) saturate(1.1); }
   body.soul .flow-soulbg{ opacity:1; }
+  /* Soul-mode photos load only when soul mode is on or about to be (hover/focus/touch on the toggle) */
+  body.soul .flow-soulbg, body.soul-warm .flow-soulbg{ background-image:var(--soulbg); }
   .flow-inner > *{ position:relative; z-index:1; }
   .bgnum{ position:absolute; right:4vw; top:5%; z-index:0; font-family:'Space Grotesk'; font-weight:700;
     font-size:24vh; line-height:.7; color:#141318; opacity:.10; pointer-events:none; }
@@ -280,7 +282,7 @@
 <header id="site-head">
   <div class="bar">
     <a href="#top" id="logo" class="wg-logo" data-c="link" aria-label="WEBGROW360 ONLINE — home">
-      <img src="assets/webgrow360-mark.webp" alt="" aria-hidden="true">
+      <img src="assets/webgrow360-mark-128.webp" alt="" aria-hidden="true">
       <span class="wg-word"><b>WEBGROW360</b> <small>ONLINE</small></span>
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -455,20 +457,20 @@
     <!-- 01 HEALTH -->
     <section class="flow-sec" id="case-health">
       <div class="flow-inner" style="--pa:#16a34a; background:#eef4f1">
-        <div class="flow-soulbg" style="background-image:url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2000')"></div>
+        <div class="flow-soulbg" style="--soulbg:url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2000')"></div>
         <span class="bgnum">01</span>
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div><span class="text-xs uppercase tracking-[0.2em] font-bold" style="color:var(--pa)">01 — Health &amp; Wellness</span><h3 class="display text-3xl md:text-6xl font-bold mt-2 tracking-tight">Clinical, made <span class="soul-serif italic" style="color:var(--pa)">human.</span></h3><p class="mt-2 text-sm md:text-base opacity-70 max-w-md">Warm identities, app UI and reels that make medical care feel calm and worth following.</p></div>
           <div class="flex gap-2 text-xs flex-wrap"><span class="ftag px-3 py-1.5 rounded-full">App UI</span><span class="ftag px-3 py-1.5 rounded-full">Identity</span><span class="ftag px-3 py-1.5 rounded-full">Reels</span></div>
         </div>
         <div class="ind-strip">
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=500&h=500&fit=crop" alt="Health app UI"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Health app UI"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/health-stethoscope.mp4"><video autoplay loop muted playsinline><source src="assets/industries/health-stethoscope.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200"><img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=500&h=500&fit=crop" alt="Wellness"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=1200"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=500&h=500&fit=crop" alt="Clinic"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200"><img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Wellness"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=1200"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Clinic"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/health-monitor.mp4"><video autoplay loop muted playsinline><source src="assets/industries/health-monitor.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=1200"><img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=500&h=500&fit=crop" alt="Fitness"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1200"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500&h=500&fit=crop" alt="Workout"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=1200"><img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Fitness"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1200"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Workout"></div>
         </div>
       </div>
     </section>
@@ -476,20 +478,20 @@
     <!-- 02 REAL ESTATE -->
     <section class="flow-sec" id="case-realestate">
       <div class="flow-inner" style="--pa:#0284c7; background:#eef2f7">
-        <div class="flow-soulbg" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2000')"></div>
+        <div class="flow-soulbg" style="--soulbg:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2000')"></div>
         <span class="bgnum">02</span>
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div><span class="text-xs uppercase tracking-[0.2em] font-bold" style="color:var(--pa)">02 — Real Estate &amp; PropTech</span><h3 class="display text-3xl md:text-6xl font-bold mt-2 tracking-tight">Selling the <span class="soul-serif italic" style="color:var(--pa)">invisible.</span></h3><p class="mt-2 text-sm md:text-base opacity-70 max-w-md">Cinematic tours, ArchViz and listing platforms that sell a space before a brick is laid.</p></div>
           <div class="flex gap-2 text-xs flex-wrap"><span class="ftag px-3 py-1.5 rounded-full">ArchViz</span><span class="ftag px-3 py-1.5 rounded-full">Tours</span><span class="ftag px-3 py-1.5 rounded-full">Listings</span></div>
         </div>
         <div class="ind-strip">
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=500&h=500&fit=crop" alt="Mansion"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Mansion"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/realestate-showing.mp4"><video autoplay loop muted playsinline><source src="assets/industries/realestate-showing.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=500&h=500&fit=crop" alt="Interior"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=500&h=500&fit=crop" alt="Building"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Interior"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Building"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/realestate-keys.mp4"><video autoplay loop muted playsinline><source src="assets/industries/realestate-keys.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=500&h=500&fit=crop" alt="House"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=500&h=500&fit=crop" alt="Living room"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="House"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Living room"></div>
         </div>
       </div>
     </section>
@@ -497,20 +499,20 @@
     <!-- 03 FINTECH -->
     <section class="flow-sec" id="case-fintech">
       <div class="flow-inner" style="--pa:#b45309; background:#f6f1e6">
-        <div class="flow-soulbg" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000')"></div>
+        <div class="flow-soulbg" style="--soulbg:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000')"></div>
         <span class="bgnum">03</span>
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div><span class="text-xs uppercase tracking-[0.2em] font-bold" style="color:var(--pa)">03 — Fintech &amp; Finance</span><h3 class="display text-3xl md:text-6xl font-bold mt-2 tracking-tight">Numbers, made <span class="soul-serif italic" style="color:var(--pa)">magnetic.</span></h3><p class="mt-2 text-sm md:text-base opacity-70 max-w-md">Card design, neo-bank campaigns and trading UI that turn trust and security into screenshots.</p></div>
           <div class="flex gap-2 text-xs flex-wrap"><span class="ftag px-3 py-1.5 rounded-full">Card UX</span><span class="ftag px-3 py-1.5 rounded-full">Campaigns</span><span class="ftag px-3 py-1.5 rounded-full">Dashboards</span></div>
         </div>
         <div class="ind-strip">
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1200"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=500&h=500&fit=crop" alt="Card"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1200"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Card"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/fintech-markets.mp4"><video autoplay loop muted playsinline><source src="assets/industries/fintech-markets.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=500&h=500&fit=crop" alt="App"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1200"><img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=500&h=500&fit=crop" alt="Finance"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="App"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1200"><img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Finance"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/fintech-payment.mp4"><video autoplay loop muted playsinline><source src="assets/industries/fintech-payment.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=1200"><img src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=500&h=500&fit=crop" alt="Crypto"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?q=80&w=1200"><img src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?q=80&w=500&h=500&fit=crop" alt="Wallet"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=1200"><img src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Crypto"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?q=80&w=1200"><img src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Wallet"></div>
         </div>
       </div>
     </section>
@@ -518,7 +520,7 @@
     <!-- 04 E-COMMERCE -->
     <section class="flow-sec" id="case-ecom">
       <div class="flow-inner" style="--pa:#db2777; background:#f7eef4">
-        <div class="flow-soulbg" style="background-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2000')"></div>
+        <div class="flow-soulbg" style="--soulbg:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2000')"></div>
         <span class="bgnum">04</span>
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div><span class="text-xs uppercase tracking-[0.2em] font-bold" style="color:var(--pa)">04 — E-commerce &amp; D2C</span><h3 class="display text-3xl md:text-6xl font-bold mt-2 tracking-tight">Scroll-stopping, <span class="soul-serif italic" style="color:var(--pa)">by design.</span></h3><p class="mt-2 text-sm md:text-base opacity-70 max-w-md">Hook-first UGC, campaign art and store UX built to crush customer acquisition cost.</p></div>
@@ -526,12 +528,12 @@
         </div>
         <div class="ind-strip">
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/ecommerce-browsing.mp4"><video autoplay loop muted playsinline><source src="assets/industries/ecommerce-browsing.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1200"><img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=500&h=500&fit=crop" alt="Product"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1200"><img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=500&h=500&fit=crop" alt="Store"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1200"><img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Product"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1200"><img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Store"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/ecommerce-packing.mp4"><video autoplay loop muted playsinline><source src="assets/industries/ecommerce-packing.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500&h=500&fit=crop" alt="Apparel"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1200"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=500&h=500&fit=crop" alt="Cosmetics"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=1200"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=500&h=500&fit=crop" alt="Packaging"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Apparel"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1200"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Cosmetics"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=1200"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Packaging"></div>
         </div>
       </div>
     </section>
@@ -539,20 +541,20 @@
     <!-- 05 HOSPITALITY -->
     <section class="flow-sec" id="case-hospitality">
       <div class="flow-inner" style="--pa:#c2410c; background:#f7f0e8">
-        <div class="flow-soulbg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2000')"></div>
+        <div class="flow-soulbg" style="--soulbg:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2000')"></div>
         <span class="bgnum">05</span>
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div><span class="text-xs uppercase tracking-[0.2em] font-bold" style="color:var(--pa)">05 — Hospitality &amp; Food</span><h3 class="display text-3xl md:text-6xl font-bold mt-2 tracking-tight">Mouth-watering, <span class="soul-serif italic" style="color:var(--pa)">on cue.</span></h3><p class="mt-2 text-sm md:text-base opacity-70 max-w-md">Visceral food films, menus and social campaigns that turn a scroll into a reservation.</p></div>
           <div class="flex gap-2 text-xs flex-wrap"><span class="ftag px-3 py-1.5 rounded-full">Photography</span><span class="ftag px-3 py-1.5 rounded-full">Menus</span><span class="ftag px-3 py-1.5 rounded-full">Social</span></div>
         </div>
         <div class="ind-strip">
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=500&h=500&fit=crop" alt="Pizza"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Pizza"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/hospitality-chef.mp4"><video autoplay loop muted playsinline><source src="assets/industries/hospitality-chef.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=500&h=500&fit=crop" alt="Restaurant"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=500&h=500&fit=crop" alt="Cafe"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Restaurant"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Cafe"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/hospitality-service.mp4"><video autoplay loop muted playsinline><source src="assets/industries/hospitality-service.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1200"><img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=500&h=500&fit=crop" alt="Burger"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=500&h=500&fit=crop" alt="Dining"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1200"><img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Burger"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Dining"></div>
         </div>
       </div>
     </section>
@@ -560,7 +562,7 @@
     <!-- 06 TECH -->
     <section class="flow-sec" id="case-tech">
       <div class="flow-inner" style="--pa:#7c3aed; background:#f0eef9">
-        <div class="flow-soulbg" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000')"></div>
+        <div class="flow-soulbg" style="--soulbg:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000')"></div>
         <span class="bgnum">06</span>
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div><span class="text-xs uppercase tracking-[0.2em] font-bold" style="color:var(--pa)">06 — Technology &amp; SaaS</span><h3 class="display text-3xl md:text-6xl font-bold mt-2 tracking-tight">Clarity in <span class="soul-serif italic" style="color:var(--pa)">complexity.</span></h3><p class="mt-2 text-sm md:text-base opacity-70 max-w-md">Brand, explainer motion and web that make complex software obvious in five seconds.</p></div>
@@ -568,12 +570,12 @@
         </div>
         <div class="ind-strip">
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/tech-coding.mp4"><video autoplay loop muted playsinline><source src="assets/industries/tech-coding.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=500&h=500&fit=crop" alt="Team"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=500&h=500&fit=crop" alt="Laptop"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Team"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Laptop"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/tech-datacenter.mp4"><video autoplay loop muted playsinline><source src="assets/industries/tech-datacenter.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1200"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=500&h=500&fit=crop" alt="Device"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=500&h=500&fit=crop" alt="Circuit"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=500&h=500&fit=crop" alt="Workspace"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1200"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Device"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Circuit"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Workspace"></div>
         </div>
       </div>
     </section>
@@ -678,24 +680,24 @@
         <p class="text-sm" style="color:var(--soft)">Design · Motion · AI · Web · Data</p>
       </div>
       <div class="flex flex-wrap items-center gap-x-8 gap-y-7">
-        <img class="tool-logo" src="https://api.iconify.design/logos:figma.svg" alt="Figma" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:adobe-photoshop.svg" alt="Adobe Photoshop" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:adobe-illustrator.svg" alt="Adobe Illustrator" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:adobe-premiere.svg" alt="Adobe Premiere Pro" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:adobe-after-effects.svg" alt="Adobe After Effects" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/simple-icons:canva.svg" alt="Canva" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:blender.svg" alt="Blender" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:framer.svg" alt="Framer" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:webflow.svg" alt="Webflow" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:nextjs-icon.svg" alt="Next.js" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:openai-icon.svg" alt="ChatGPT" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:claude.svg" alt="Claude" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:midjourney.svg" alt="Midjourney" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-figma.svg" alt="Figma" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-adobe-photoshop.svg" alt="Adobe Photoshop" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-adobe-illustrator.svg" alt="Adobe Illustrator" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-adobe-premiere.svg" alt="Adobe Premiere Pro" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-adobe-after-effects.svg" alt="Adobe After Effects" loading="lazy">
+        <img class="tool-logo" src="assets/icons/simple-icons-canva.svg" alt="Canva" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-blender.svg" alt="Blender" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-framer.svg" alt="Framer" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-webflow.svg" alt="Webflow" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-nextjs-icon.svg" alt="Next.js" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-openai-icon.svg" alt="ChatGPT" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-claude.svg" alt="Claude" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-midjourney.svg" alt="Midjourney" loading="lazy">
         <img class="tool-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='2' width='28' height='28' rx='8' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3Cpath d='M11 9 V23 M21 9 V23 M11 16 H21' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E" alt="Higgsfield" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:meta-icon.svg" alt="Meta Ads" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:google-ads.svg" alt="Google Ads" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:google-analytics.svg" alt="Google Analytics" loading="lazy">
-        <img class="tool-logo" src="https://api.iconify.design/logos:notion-icon.svg" alt="Notion" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-meta-icon.svg" alt="Meta Ads" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-google-ads.svg" alt="Google Ads" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-google-analytics.svg" alt="Google Analytics" loading="lazy">
+        <img class="tool-logo" src="assets/icons/logos-notion-icon.svg" alt="Notion" loading="lazy">
       </div>
     </div>
   </section>
@@ -805,8 +807,8 @@
 
       <div class="wf-bar">
         <a href="index.html" class="wf-brand" data-c="link" aria-label="WebGrow360 Online — home">
-          <img src="assets/webgrow360-mark.webp" alt="" width="34" height="34" loading="lazy">
-          <span><b>WEBGROW360</b><small>ONLINE</small></span>
+          <img src="assets/webgrow360-mark-128.webp" alt="" width="34" height="34" loading="lazy">
+          <span><b>WEBGROW360</b> <small>ONLINE</small></span>
         </a>
         <div class="wf-social">
           <a class="wf-ico" href="https://wa.me/918974332863" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-c="link">
@@ -847,7 +849,7 @@
       <div class="n-content justify-center text-center">
         <div class="max-w-4xl mx-auto">
           <p class="n-title text-[10px] uppercase tracking-[0.3em] text-white/50 mb-7">Prologue // 00</p>
-          <h1 class="n-title n-serif text-6xl md:text-8xl lg:text-[8.5vw] leading-none mb-7">Every brand has a <span class="italic text-white/70">soul.</span></h1>
+          <h2 class="n-title n-serif text-6xl md:text-8xl lg:text-[8.5vw] leading-none mb-7">Every brand has a <span class="italic text-white/70">soul.</span></h2>
           <p class="n-title text-sm md:text-base text-white/70 max-w-xl mx-auto font-light leading-relaxed">We don't ship generic campaigns. We craft immersive worlds that capture the essence of each industry we touch. Scroll to experience the WebGrow360 narrative.</p>
         </div>
       </div>
@@ -867,12 +869,12 @@
           <div class="n-title flex gap-2 text-xs flex-wrap"><span class="ftag px-3 py-1.5 rounded-full">App UI</span><span class="ftag px-3 py-1.5 rounded-full">Identity</span><span class="ftag px-3 py-1.5 rounded-full">Reels</span></div>
         </div>
         <div class="n-title ind-strip w-full">
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=500&h=500&fit=crop" alt="Health app UI"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Health app UI"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/health-stethoscope.mp4"><video autoplay loop muted playsinline><source src="assets/industries/health-stethoscope.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200"><img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=500&h=500&fit=crop" alt="Wellness"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=1200"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=500&h=500&fit=crop" alt="Clinic"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200"><img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Wellness"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=1200"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Clinic"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/health-monitor.mp4"><video autoplay loop muted playsinline><source src="assets/industries/health-monitor.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=1200"><img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=500&h=500&fit=crop" alt="Fitness"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=1200"><img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Fitness"></div>
         </div>
       </div>
     </section>
@@ -891,12 +893,12 @@
           <div class="n-title flex gap-2 text-xs flex-wrap"><span class="ftag px-3 py-1.5 rounded-full">ArchViz</span><span class="ftag px-3 py-1.5 rounded-full">Tours</span><span class="ftag px-3 py-1.5 rounded-full">Listings</span></div>
         </div>
         <div class="n-title ind-strip w-full">
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=500&h=500&fit=crop" alt="Mansion"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Mansion"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/realestate-showing.mp4"><video autoplay loop muted playsinline><source src="assets/industries/realestate-showing.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=500&h=500&fit=crop" alt="Interior"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=500&h=500&fit=crop" alt="Building"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Interior"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Building"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/realestate-keys.mp4"><video autoplay loop muted playsinline><source src="assets/industries/realestate-keys.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=500&h=500&fit=crop" alt="House"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="House"></div>
         </div>
       </div>
     </section>
@@ -915,12 +917,12 @@
           <div class="n-title flex gap-2 text-xs flex-wrap"><span class="ftag px-3 py-1.5 rounded-full">Card UX</span><span class="ftag px-3 py-1.5 rounded-full">Campaigns</span><span class="ftag px-3 py-1.5 rounded-full">Dashboards</span></div>
         </div>
         <div class="n-title ind-strip w-full">
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1200"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=500&h=500&fit=crop" alt="Card"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1200"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Card"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/fintech-markets.mp4"><video autoplay loop muted playsinline><source src="assets/industries/fintech-markets.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=500&h=500&fit=crop" alt="App"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1200"><img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=500&h=500&fit=crop" alt="Finance"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="App"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1200"><img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Finance"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/fintech-payment.mp4"><video autoplay loop muted playsinline><source src="assets/industries/fintech-payment.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=1200"><img src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=500&h=500&fit=crop" alt="Crypto"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=1200"><img src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Crypto"></div>
         </div>
       </div>
     </section>
@@ -940,11 +942,11 @@
         </div>
         <div class="n-title ind-strip w-full">
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/ecommerce-browsing.mp4"><video autoplay loop muted playsinline><source src="assets/industries/ecommerce-browsing.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1200"><img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=500&h=500&fit=crop" alt="Product"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1200"><img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=500&h=500&fit=crop" alt="Store"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1200"><img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Product"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1200"><img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Store"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/ecommerce-packing.mp4"><video autoplay loop muted playsinline><source src="assets/industries/ecommerce-packing.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500&h=500&fit=crop" alt="Apparel"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1200"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=500&h=500&fit=crop" alt="Cosmetics"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Apparel"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1200"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Cosmetics"></div>
         </div>
       </div>
     </section>
@@ -963,12 +965,12 @@
           <div class="n-title flex gap-2 text-xs flex-wrap"><span class="ftag px-3 py-1.5 rounded-full">Photography</span><span class="ftag px-3 py-1.5 rounded-full">Menus</span><span class="ftag px-3 py-1.5 rounded-full">Social</span></div>
         </div>
         <div class="n-title ind-strip w-full">
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=500&h=500&fit=crop" alt="Pizza"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Pizza"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/hospitality-chef.mp4"><video autoplay loop muted playsinline><source src="assets/industries/hospitality-chef.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=500&h=500&fit=crop" alt="Restaurant"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=500&h=500&fit=crop" alt="Cafe"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Restaurant"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Cafe"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/hospitality-service.mp4"><video autoplay loop muted playsinline><source src="assets/industries/hospitality-service.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1200"><img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=500&h=500&fit=crop" alt="Burger"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1200"><img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Burger"></div>
         </div>
       </div>
     </section>
@@ -988,11 +990,11 @@
         </div>
         <div class="n-title ind-strip w-full">
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/tech-coding.mp4"><video autoplay loop muted playsinline><source src="assets/industries/tech-coding.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=500&h=500&fit=crop" alt="Team"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=500&h=500&fit=crop" alt="Laptop"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Team"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Laptop"></div>
           <div class="media reel" data-c="view" data-type="video" data-src="assets/industries/tech-datacenter.mp4"><video autoplay loop muted playsinline><source src="assets/industries/tech-datacenter.mp4" type="video/mp4"></video></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1200"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=500&h=500&fit=crop" alt="Device"></div>
-          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=500&h=500&fit=crop" alt="Circuit"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1200"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Device"></div>
+          <div class="media sq" data-c="view" data-type="image" data-src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=500&h=500&fit=crop" loading="lazy" decoding="async" alt="Circuit"></div>
         </div>
       </div>
     </section>
@@ -1197,6 +1199,7 @@
     nDots.forEach(function(d,i){ d.addEventListener('click',function(){ nChs[i].scrollIntoView({behavior:'smooth'}); }); });
   }
 
+  (function(b){ function warm(){ document.body.classList.add('soul-warm'); } ['pointerenter','focus','touchstart'].forEach(function(ev){ b.addEventListener(ev,warm,{once:true,passive:true}); }); })(document.getElementById('soul-btn'));
   document.getElementById('soul-btn').addEventListener('click',function(){
     var on=document.body.classList.toggle('soul');
     var tc=document.querySelector('meta[name=theme-color]'); if(tc)tc.setAttribute('content',on?'#000000':'#f3f2ec');
@@ -1227,6 +1230,6 @@
   window.addEventListener('load',function(){ if(hasGsap) setTimeout(function(){ScrollTrigger.refresh();},400); });
 })();
 </script>
-<script src="assets/js/footer.js" defer></script>
+<script src="assets/js/footer.js?v=20261104" defer></script>
 </body>
 </html>
