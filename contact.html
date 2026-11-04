@@ -9,17 +9,27 @@
 <meta name="description" content="Tell WebGrow360 about your brand. Share your name, contact details and the service you need — brand identity, reels, campaign design or performance marketing — and we’ll set up a free discovery call." />
 <link rel="canonical" href="https://webgrow360.online/contact" />
 <meta name="robots" content="index, follow" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="WebGrow360" />
+<meta property="og:title" content="Contact WebGrow360 | Start a Project or Book a Free Discovery Call" />
+<meta property="og:description" content="Tell WebGrow360 about your brand. Share your name, contact details and the service you need — brand identity, reels, campaign design or performance marketing — and we’ll set up a free discovery call." />
+<meta property="og:url" content="https://webgrow360.online/contact" />
+<meta property="og:image" content="https://webgrow360.online/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"ContactPage","name":"Contact WebGrow360 | Start a Project or Book a Free Discovery Call","description":"Tell WebGrow360 about your brand. Share your name, contact details and the service you need — brand identity, reels, campaign design or performance marketing — and we’ll set up a free discovery call.","url":"https://webgrow360.online/contact","mainEntity":{"@type":"ProfessionalService","name":"WebGrow360","url":"https://webgrow360.online/","telephone":"+91-8974332863","email":"Connect@team.webgrow360.online","address":{"@type":"PostalAddress","addressLocality":"Agartala","addressRegion":"Tripura","addressCountry":"IN"}}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://webgrow360.online/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://webgrow360.online/contact"}]}]}
+</script>
 
 <link rel="icon" type="image/webp" href="assets/webgrow360-mark.webp" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Instrument+Sans:wght@600&family=Azeret+Mono:wght@400&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { theme: { extend: { fontFamily: {
-    display:['Space Grotesk','sans-serif'], body:['Inter','sans-serif'], serif:['Cormorant Garamond','serif'], mono:['JetBrains Mono','monospace']
-  } } } };
-</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<!-- Self-hosted fonts (assets/fonts, see assets/css/fonts.css) -->
+<link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/fonts.css?v=20261104" />
+<!-- Pre-built Tailwind (see tailwind.site.config.js) instead of the render-blocking CDN -->
+<link rel="stylesheet" href="assets/css/site.css?v=20261104" />
 
 
 <style>
@@ -303,7 +313,7 @@
 <header id="site-head">
   <div class="bar">
     <a href="index.html" id="logo" class="wg-logo" data-c="link" aria-label="WEBGROW360 ONLINE — home">
-      <img src="assets/webgrow360-mark.webp" alt="" aria-hidden="true">
+      <img src="assets/webgrow360-mark-128.webp" alt="" aria-hidden="true">
       <span class="wg-word"><b>WEBGROW360</b> <small>ONLINE</small></span>
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -500,8 +510,8 @@
 
       <div class="wf-bar">
         <a href="index.html" class="wf-brand" data-c="link" aria-label="WebGrow360 Online — home">
-          <img src="assets/webgrow360-mark.webp" alt="" width="34" height="34" loading="lazy">
-          <span><b>WEBGROW360</b><small>ONLINE</small></span>
+          <img src="assets/webgrow360-mark-128.webp" alt="" width="34" height="34" loading="lazy">
+          <span><b>WEBGROW360</b> <small>ONLINE</small></span>
         </a>
         <div class="wf-social">
           <a class="wf-ico" href="https://wa.me/918974332863" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-c="link">
@@ -572,11 +582,9 @@
     var tc=document.querySelector('meta[name=theme-color]'); if(tc)tc.setAttribute('content',on?'#070611':'#f3f2ec');
   });
 
-  // ===== contact form: inline validation, then save to Supabase without leaving the page =====
-  // Publishable key is safe in the browser: RLS on this table allows INSERT only (no reads).
-  var SUPABASE_URL='https://sdxfxzzhcnnxjnuzkwva.supabase.co',
-      SUPABASE_KEY='sb_publishable__qfh02H5u4erQvSBAqB7NQ_UKMcL1Gc',
-      ENQUIRY_TABLE='Marketing_enqueries_webgrow360';
+  // ===== contact form: inline validation, then save to MongoDB without leaving the page =====
+  // The browser never talks to the database: api/enquiry.php holds the credentials server-side.
+  var ENQUIRY_ENDPOINT='/api/enquiry.php';
   (function(){
     var form=document.getElementById('contact-form'); if(!form) return;
     var card=document.getElementById('contact-card'), status=document.getElementById('form-status'), btn=document.getElementById('send');
@@ -584,7 +592,10 @@
     // pre-select a service when arriving from a service page (contact.html?service=reels)
     var q=new URLSearchParams(location.search), key=q.get('service');
     if(key){ [].forEach.call(sel.options,function(o){ if(o.dataset.key===key) sel.value=o.value; }); }
-    function showDone(name){ document.getElementById('done-name').textContent=name?(', '+name.split(' ')[0]):''; card.classList.add('sent'); var d=document.getElementById('form-done'); d.focus({preventScroll:true}); }
+    function showDone(name){ document.getElementById('done-name').textContent=name?(', '+name.split(' ')[0]):''; card.classList.add('sent'); var d=document.getElementById('form-done'); d.focus({preventScroll:true});
+      // the card shrinks to the thank-you message; bring its top below the fixed header (mattered on phones)
+      var top=card.getBoundingClientRect().top, head=(document.getElementById('site-head')||{}).offsetHeight||0;
+      if(top<head+16){ var y=window.scrollY+top-head-24; if(lenis) lenis.scrollTo(y); else window.scrollTo({top:y,behavior:'smooth'}); } }
     if(q.get('sent')==='1') showDone('');
 
     var rules={
@@ -618,19 +629,18 @@
       btn.disabled=true; btn.classList.add('busy'); btn.querySelector('.lbl').textContent='Sending…';
       var d=new FormData(form);
       var row={ name:d.get('name').trim(), email:d.get('email').trim(), phone:d.get('phone').trim(), service:d.get('service'),
-        message:d.get('message').trim(), source_page:location.href.slice(0,300), user_agent:navigator.userAgent.slice(0,400) };
-      // Netlify Forms copy kept as a backup / email notification; Supabase is the source of truth
+        message:d.get('message').trim(), source_page:location.href.slice(0,300), company_website:d.get('company_website')||'' };
+      // Netlify Forms copy kept as a backup / email notification; MongoDB (via api/enquiry.php) is the source of truth
       fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()}).catch(function(){});
-      fetch(SUPABASE_URL+'/rest/v1/'+ENQUIRY_TABLE,{method:'POST',
-        headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Prefer':'return=minimal'},
-        body:JSON.stringify(row)})
-        .then(function(r){ if(!r.ok) throw new Error(r.status); showDone(row.name); form.reset(); })
+      fetch(ENQUIRY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(row)})
+        .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if(!r.ok||!j.ok) throw new Error(r.status); }); })
+        .then(function(){ showDone(row.name); form.reset(); })
         .catch(fallback)
         .then(function(){ btn.disabled=false; btn.classList.remove('busy'); btn.querySelector('.lbl').textContent='Send Message'; });
     });
   })();
 })();
 </script>
-<script src="assets/js/footer.js" defer></script>
+<script src="assets/js/footer.js?v=20261104" defer></script>
 </body>
 </html>

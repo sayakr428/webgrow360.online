@@ -1,0 +1,5 @@
+# Only enquiry.php is public; config files are never served.
+Options -Indexes
+<FilesMatch "^config(\.example)?\.php$">
+  Require all denied
+</FilesMatch>
